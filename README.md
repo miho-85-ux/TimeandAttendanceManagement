@@ -102,31 +102,32 @@ php artisan migrate:fresh --env=testing
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
-### テーブル
+### admin_usersテーブル
 | カラム名 | 型 | primary key | unique key | not null | foreign key |
 | --- | --- | --- | --- | --- | --- |
 | id | bigint | ◯ |  | ◯ |  |
-| seller_id | unsigned bigint | |   | ◯ | users(id) |   
-| buyer_id | unsigned bigint |  |   |   | users(id) |
-| name | varchar(255) | |   | ◯ |   |   
+| email | varchar(255) |  |   | ◯ |  |   
+| password |  varchar(255) |  |   | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  | 
 
+### breaksテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| attendance_id | unsigned bigint |   |   | ◯ | ◯ | attendances(id) |
+| break_start | datetime |    |  |  |  |
+| break_end | datetime |    |  |  |  |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
-### テーブル
+### attendancesテーブル
 | カラム名 | 型 | primary key | unique key | not null | foreign key |
 | --- | --- | --- | --- | --- | --- |
 | id | bigint | ◯ |  | ◯ |  |
-| user_id | unsigned bigint |   |   | ◯(product_idとの組み合わせ) | ◯ | users(id) |
-| product_id | unsigned bigint |    | ◯(user_idとの組み合わせ) | ◯ | products(id) |
-| created_at | timestamp |  |  |  |  |
-| updated_at | timestamp |  |  |  |  |
-
-### テーブル
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | bigint | ◯ |  | ◯ |  |
-
+| date | date |  |  | ◯ |  |
+| check_in | datetime |  |  |  |  |
+| check_out | datetime |  |  |  |  |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
