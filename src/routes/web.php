@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+
+Route::middleware('auth')->group(function()
+{
+    Route::get('/attendance', [AttendanceController::class, 'index']);
+
 });
