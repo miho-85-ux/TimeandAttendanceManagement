@@ -98,20 +98,32 @@ php artisan migrate:fresh --env=testing
 | email | varchar(255) |  | ◯ | ◯ |  |
 | email_verified_at | timestamp |  |  |  |  |
 | password | varchar(255) |  |  | ◯ |  |
+| role | varchar(255) |  |  |  |  |
 | remember_token | varchar(100) |  |  |  |  |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
-### admin_usersテーブル
+<!-- ### admin_usersテーブル
 | カラム名 | 型 | primary key | unique key | not null | foreign key |
 | --- | --- | --- | --- | --- | --- |
 | id | bigint | ◯ |  | ◯ |  |
 | email | varchar(255) |  |   | ◯ |  |   
 | password |  varchar(255) |  |   | ◯ |  |
 | created_at | timestamp |  |  |  |  |
-| updated_at | timestamp |  |  |  |  | 
+| updated_at | timestamp |  |  |  |  |  -->
 
-### breaksテーブル
+### attendancesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| user_id | bigint |  |  | ◯ |  |
+| date | date |  |  | ◯ |  |
+| check_in | datetime |  |  |  |  |
+| check_out | datetime |  |  |  |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### break_timesテーブル
 | カラム名 | 型 | primary key | unique key | not null | foreign key |
 | --- | --- | --- | --- | --- | --- |
 | id | bigint | ◯ |  | ◯ |  |
@@ -121,15 +133,7 @@ php artisan migrate:fresh --env=testing
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
-### attendancesテーブル
-| カラム名 | 型 | primary key | unique key | not null | foreign key |
-| --- | --- | --- | --- | --- | --- |
-| id | bigint | ◯ |  | ◯ |  |
-| date | date |  |  | ◯ |  |
-| check_in | datetime |  |  |  |  |
-| check_out | datetime |  |  |  |  |
-| created_at | timestamp |  |  |  |  |
-| updated_at | timestamp |  |  |  |  |
+
 
 
 ## ER図添付  
@@ -149,8 +153,8 @@ php artisan migrate:fresh --env=testing
 
 ### 備考  
 * 今回のテストデータは2つあります。
-    * テストデータ1  商品を出品しており、商品一覧が見れません。
-    * テストデータ2  テストデータ2を使って、ログインしてください。  
+    * テストデータ1  管理者用
+    * テストデータ2  一般ユーザー用  
 
 * ログインする際、以下のログインパスワードでログインしてください。　
     * テストデータ1  

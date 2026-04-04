@@ -1,0 +1,35 @@
+.content {
+    width: 1512px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 0 20px;
+}
+
+.header-items {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item {
+    text-decoration: none;
+    color: #fff;
+}
+
+.logout-submit {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
