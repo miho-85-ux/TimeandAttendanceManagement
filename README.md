@@ -127,7 +127,7 @@ php artisan migrate:fresh --env=testing
 | カラム名 | 型 | primary key | unique key | not null | foreign key |
 | --- | --- | --- | --- | --- | --- |
 | id | bigint | ◯ |  | ◯ |  |
-| attendance_id | unsigned bigint |   |   | ◯ | ◯ | attendances(id) |
+| attendance_id | unsigned bigint |   |   | ◯ | attendances(id) |
 | break_start | datetime |    |  |  |  |
 | break_end | datetime |    |  |  |  |
 | created_at | timestamp |  |  |  |  |
@@ -159,13 +159,13 @@ php artisan migrate:fresh --env=testing
 * ログインする際、以下のログインパスワードでログインしてください。　
     * テストデータ1  
         ```bash  
-        メールアドレス: **test1@example.com**   
-        パスワード:     **password**  
+        メールアドレス: ** test1@example.com **   
+        パスワード:     ** password **  
         ```
     * テストデータ2  
         ```bash  
-        メールアドレス: **test2@example.com**   
-        パスワード:     **password**  
+        メールアドレス: ** test2@example.com **   
+        パスワード:     ** password **  
         ```
   
 
