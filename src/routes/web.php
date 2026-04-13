@@ -22,5 +22,7 @@ Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::middleware('auth')->group(function()
 {
     Route::get('/attendance', [AttendanceController::class, 'index']);
+    Route::post('/attendance', [AttendanceController::class, 'store']);
+    Route::get('/attendance/list', [AttendanceController::class, 'index']);
 
 });
