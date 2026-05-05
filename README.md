@@ -147,7 +147,8 @@ php artisan migrate:fresh --env=testing
 * MailTrap
 
 ## 開発環境 
-* 商品一覧:http://localhost/  
+* 一般用ログイン:http://localhost/login  
+* 管理者用ログイン:http://localhost/admin/login  
 * phpmyadmin:http://localhost:8080  
 * MailTrap:https://mailtrap.io  
 
@@ -159,13 +160,13 @@ php artisan migrate:fresh --env=testing
 * ログインする際、以下のログインパスワードでログインしてください。　
     * テストデータ1  
         ```bash  
-        メールアドレス: ** test1@example.com **   
-        パスワード:     ** password **  
+        メールアドレス:  test1@example.com    
+        パスワード:      password   
         ```
     * テストデータ2  
         ```bash  
-        メールアドレス: ** test2@example.com **   
-        パスワード:     ** password **  
+        メールアドレス:  test2@example.com    
+        パスワード:      password   
         ```
   
 

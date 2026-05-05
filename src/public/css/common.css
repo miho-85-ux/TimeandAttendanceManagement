@@ -1,8 +1,8 @@
 .content {
     width: 1512px;
-    height: 982px;
     background-color: #F0EFF2;
     margin: 0 auto;
+    padding: 0 0 100px 0;
 }
 
 .header {
