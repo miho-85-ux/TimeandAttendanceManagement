@@ -20,6 +20,8 @@ class CreateAttendancesTable extends Migration
             $table->datetime('check_in')->nullable();
             $table->datetime('check_out')->nullable();
             $table->timestamps();
+            $table->string('remarks')->nullable();
+            $table->string('status')->default('normal');
             $table->unique(['user_id', 'date']);
         });
     }

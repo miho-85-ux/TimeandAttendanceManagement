@@ -120,6 +120,8 @@ php artisan migrate:fresh --env=testing
 | date | date |  |  | ◯ |  |
 | check_in | datetime |  |  |  |  |
 | check_out | datetime |  |  |  |  |
+| remarks | string |  |  |  |  |
+| status | string |  |  |  |  |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
