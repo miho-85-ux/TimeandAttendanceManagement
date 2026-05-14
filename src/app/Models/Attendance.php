@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
@@ -14,6 +15,8 @@ class Attendance extends Model
         'date',
         'check_in',
         'check_out',
+        'remarks',
+        'status',
     ];
 
     public function user() {
@@ -31,26 +34,30 @@ class Attendance extends Model
         return "{$hours}時間{$minutes}分";
     }
 
-    public function getFormattedDateAttribute(){
-        return \Carbon\Carbon::parse($this->date)->translatedFormat('n/j (D)');
+    public function getListDateAttribute(){
+        return Carbon::parse($this->date)->translatedFormat('n/j (D)');
+    }
+
+    public function getDetailDateAttribute(){
+        return carbon::parse($this->date)->format('Y年  n月j日');
     }
 
     public function getCheckInTimeAttribute(){
-        return \Carbon\Carbon::parse($this->check_in)->format('H:i');
+        return Carbon::parse($this->check_in)->format('H:i');
     }
     
     public function getCheckOutTimeAttribute(){
         if(!$this->check_out) {
             return '-';
         }
-        return \Carbon\Carbon::parse($this->check_out)->format('H:i');
+        return Carbon::parse($this->check_out)->format('H:i');
     }
 
     public function getBreakTimeAttribute(){
         $totalBreak = 0;
 
         foreach ($this->breaktimes as $break) {
-            $totalBreak += \Carbon\Carbon::parse($break->break_end)->diffInMinutes(\Carbon\Carbon::parse($break->break_start));
+            $totalBreak += Carbon::parse($break->break_end)->diffInMinutes(Carbon::parse($break->break_start));
         }
 
         $hours = floor($totalBreak /60);
@@ -64,14 +71,14 @@ class Attendance extends Model
             return 0;
         }
 
-        return \Carbon\Carbon::parse($this->check_out)->diffInMinutes(\Carbon\Carbon::parse($this->check_in));
+        return Carbon::parse($this->check_out)->diffInMinutes(Carbon::parse($this->check_in));
     }
 
     public function getBreakMinutesAttribute(){
         $total = 0;
         foreach($this->breaktimes as $break){
             if($break->break_start && $break->break_end) {
-                $total += \Carbon\Carbon::parse($break->break_end)->diffInMinutes(\Carbon\Carbon::parse($break->break_start));
+                $total += Carbon::parse($break->break_end)->diffInMinutes(Carbon::parse($break->break_start));
             }
         }
         return $total;
@@ -94,4 +101,6 @@ class Attendance extends Model
 
         return sprintf('%d:%02d', $hours, $minutes);
     }
+
+    
 }

@@ -35,7 +35,13 @@
             <td>{{ $attendance ? $attendance->check_out_time : '-' }}</td>
             <td>{{ $attendance ? $attendance->break_hours : '-' }}</td>
             <td>{{ $attendance ? $attendance->actual_work_hours : '-' }}</td>
-            <td><a class="detail-button" href="/attendance/detail">詳細</a></td>
+            <td>
+                @if($attendance)
+                    <a class="detail-button" href="/attendance/detail/{{ $attendance->id }}">詳細</a>
+                @else
+                    - 
+                @endif
+            </td>
         </tr>
         @endforeach
     </table>
