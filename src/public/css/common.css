@@ -15,9 +15,9 @@
 }
 
 .header-items {
-    width: 500px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     list-style: none;
     font-size: 24px;
     font-weight: bold;
@@ -26,9 +26,11 @@
 .item {
     text-decoration: none;
     color: #fff;
+    padding: 15px;
 }
 
 .logout-submit {
+    text-align: center;
     border: none;
     background-color: #000;
     color: #fff;

@@ -17,7 +17,7 @@
             <ul class="header-items">
                 <li><a class="item" href="/attendance">勤怠</a></li>
                 <li><a class="item" href="/attendance/list">勤怠一覧</a></li>
-                <li><a class="item" href="">申請</a></li>
+                <li><a class="item" href="/stamp_correction_request/list">申請</a></li>
                 <form action="/logout" method="POST">
                     @csrf 
                     <button class="logout-submit" type="submit">ログアウト</button>

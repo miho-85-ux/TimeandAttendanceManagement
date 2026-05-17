@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user;
 
+
 class AuthController extends Controller
 {
     public function registerForm() {
@@ -15,5 +16,9 @@ class AuthController extends Controller
 
         return view('auth.login');
     }
+    
+    public function adminloginForm() {
 
+        return view('auth.admin-login');
+    }
 }
