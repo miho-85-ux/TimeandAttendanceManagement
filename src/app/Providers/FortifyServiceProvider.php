@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\LoginResponse ;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,34 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
             public function toResponse($request)
             {
+                $role = session('role');
+
+                session()->forget('role');
+
+                if($role === 'admin'){
+                    return redirect('/admin/login');
+                }
+
                 return redirect('/login');
+            }
+        });
+
+        $this->app->instance(LoginResponse ::class, new class implements LoginResponse  {
+            public function toResponse($request)
+            {                
+                $user = auth()->user();
+                
+                if(!$user){
+                    return redirect('/login');
+                }
+
+                session(['role' => $user->role]);
+
+                if($user->role === 'admin'){
+                    return redirect('/admin/attendance/list');
+                }
+
+                return redirect('/attendance/list');
             }
         });
     }
@@ -48,7 +76,8 @@ class FortifyServiceProvider extends ServiceProvider
             return new class implements RegisterResponse {
                 public function toResponse($request)
                 {
-                    return redirect('/attendance');
+                    return redirect('/email/verify');
+
                 }
             };
         });
@@ -58,6 +87,12 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
-    
+
+        Fortify::verifyEmailView(function(){
+            
+            return view('auth.verify-email');
+        });
+
+        
     }
 }

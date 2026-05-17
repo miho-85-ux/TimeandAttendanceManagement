@@ -1,0 +1,54 @@
+.request-content{
+    width: 900px;
+    margin: 0 auto;
+}
+
+.request-content__title {
+    border-left: 8px solid #000;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 25px;
+    margin: 80px 0 30px 0;
+}
+
+.request-content__select {
+    display: flex;
+    border-bottom: 1px solid #000;
+    align-items: center;
+}
+
+.wait-approved,  .approved{
+    font-size: 16px;
+    font-weight: normal;
+    padding: 15px;
+    margin: 5px 80px 5px 50px;
+    text-decoration: none;
+    color: #000;
+
+}
+
+.wait-approved.active, .approved.active{
+    font-weight: bold;
+}
+
+.request-table {
+    width: 900px;
+    background-color: #fff;
+    margin: 50px 0;
+    border-radius: 10px;
+    
+}
+
+.request-table__row {
+    border-bottom: 3px solid #E1E1E1;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+}
+
+.request-table__button {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}

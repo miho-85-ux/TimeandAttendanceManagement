@@ -10,7 +10,7 @@
     <form action="{{ route('attendance.update',  $attendance -> id) }}" method="POST">
         @method('PATCH')
         @csrf 
-        @if($attendance->status === 'pending')
+        @if($isPending)
         <!-- 表示モード -->
             <div class="attendance-detail__full-table" >
                 <table class="attendance-detail__table">
@@ -26,12 +26,12 @@
                     <tr class="table-line">
                         <th class="table-title">出勤・退勤</th>
                         <td class="approval__table-item ">
-                            <p class="approval__table-text"> {{ $attendance->check_in_time }}</p> 
+                            <p class="approval__table-text"> {{ $pendingRequest->check_in_time  }}</p> 
                             <span class="approval__table-span">~</span>
-                            <p class="approval__table-text">{{ $attendance->check_out_time }}</p>
+                            <p class="approval__table-text">{{ $pendingRequest->check_out_time }}</p>
                         </td>
                     </tr>
-                    @foreach ($attendance->breaktimes as $breaktime)
+                    <!-- @foreach ($attendance->breaktimes as $breaktime)
                         <tr class="table-line">
                             <th class="table-title">
                                 @if($loop->first)
@@ -46,7 +46,7 @@
                                 <p class="approval__table-text">{{ $breaktime->break_end_time }}</p>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach -->
                     
                     <tr >
                         <th class="table-title">備考</th>
@@ -74,9 +74,9 @@
                     <tr class="table-line">
                         <th class="table-title">出勤・退勤</th>
                         <td class="table-item">
-                            <input class="table-input" type="text" name="check_in" value="{{ $attendance->check_in_time }}"> 
+                            <input class="table-input" type="text" name="check_in" value="{{ old('check_in', $attendance->check_in_time) }}"> 
                             <span class="table-span">~</span>
-                            <input class="table-input" type="text" name="check_out" value="{{ $attendance->check_out_time }}">
+                            <input class="table-input" type="text" name="check_out" value="{{ old('check_out', $attendance->check_out_time) }}">
                             @error('check_in')
                                 <p class="error">{{ $message }}</p>
                             @enderror
@@ -86,7 +86,7 @@
                             @foreach ($attendance->breaktimes as $breaktime)
                         </td>
                     </tr>
-                        <tr class="table-line">
+                        <!-- <tr class="table-line">
                             <th class="table-title">
                                 @if($loop->first)
                                     休憩
@@ -129,7 +129,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </td>                       
-                    </tr>
+                    </tr> -->
                     <tr >
                         <th class="table-title">備考</th>
                         <td class="table-item">

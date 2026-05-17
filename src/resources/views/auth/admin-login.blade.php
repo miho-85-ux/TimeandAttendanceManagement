@@ -8,7 +8,8 @@
 <div class="Access-content">
     <h1 class="Access-title">管理者ログイン</h1>
     <div class="Access-items">
-        <form action="" method="POST" >
+        <form action="{{ route('login') }}" method="POST" >
+            @csrf 
             <div class="Access-item">
                 <label class="label" for="email">メールアドレス</label>
                 <input class="input" type="email" name="email" id="email" value="{{ old('email') }}">

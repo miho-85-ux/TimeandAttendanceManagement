@@ -27,6 +27,10 @@ class Attendance extends Model
         return $this -> hasMany(BreakTime::class);
     }
 
+    public function attendanceRequests() {
+        return $this -> hasMany(AttendanceRequest::class);
+    }
+
     public function getActualWorkTimeAttribute(){
         $hours = floor($this->actual_work_minutes / 60);
         $minutes = $this->actual_work_minutes % 60;
