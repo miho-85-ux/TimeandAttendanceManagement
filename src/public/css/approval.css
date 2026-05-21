@@ -1,0 +1,68 @@
+.approval__content {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.approval__title {
+    border-left: 8px solid #000;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 25px;
+    margin: 80px 0 50px 0;
+}
+
+.approval__table {
+    width: 900px;
+    background-color: #fff;
+    border-radius: 10px;
+
+}
+
+.approval__row {
+    border-bottom: 2px solid #E1E1E1;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.table-title {
+    color: #737373;
+    width: 35%;
+    text-align: left;
+    padding: 40px 80px;
+}
+
+.table-item {
+    color: #000;
+}
+
+.button {
+    display: flex;
+    justify-content: end;
+    margin: 20px 0;
+}
+
+.button-submit {
+    width: 130px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 45px 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+.button-submit__approved {
+    width: 130px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 45px 0;
+    background-color: #696969;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

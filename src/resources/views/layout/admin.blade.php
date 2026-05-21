@@ -15,9 +15,9 @@
                 <img src="{{ asset('images/COACHTECHヘッダーロゴ (1).png') }}" alt="COACHTECHロゴ">
             </div>
             <ul class="header-items">
-                <li><a class="item" href="">勤怠一覧</a></li>
-                <li><a class="item" href="">スタッフ一覧</a></li>
-                <li><a class="item" href="">申請一覧</a></li>
+                <li><a class="item" href="/admin/attendance/list">勤怠一覧</a></li>
+                <li><a class="item" href="/admin/staff/list">スタッフ一覧</a></li>
+                <li><a class="item" href="/admin/stamp_correction_request/list">申請一覧</a></li>
                 <form action="/logout" method="POST">
                     @csrf 
                     <button class="logout-submit" type="submit">ログアウト</button>

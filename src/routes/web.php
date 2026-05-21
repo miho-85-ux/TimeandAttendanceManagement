@@ -7,6 +7,9 @@ use App\Http\Controllers\AttendanceListController;
 use App\Http\Controllers\AttendanceDetailController;
 use App\Http\Controllers\StampCorrectionRequestController;
 use App\Http\Controllers\AdminAttendanceListController;
+use App\Http\Controllers\AdminStampCorrectionRequestController;
+use App\Http\Controllers\AdminAttendanceDetailController;
+use App\Http\Controllers\AdminStaffListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +36,17 @@ Route::middleware('auth')->group(function()
     Route::get('/attendance/detail/{id}', [AttendanceDetailController::class, 'index'])->name('attendance.detail');
     Route::patch('/attendance/detail/{id}', [AttendanceDetailController::class, 'update'])->name('attendance.update');
     Route::get('/stamp_correction_request/list', [StampCorrectionRequestController::class, 'index'])->name('stamp_correction_request.list');
-    
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-
-    Route::get('/admin/attendance/list', [AdminAttendanceListController::class, 'index']);
-
+    
+    Route::get('/admin/attendance/list', [AdminAttendanceListController::class, 'index'])->name('admin.list');
+    Route::get('/admin/attendance/{id}', [AdminAttendanceDetailController::class, 'index'])->name('admin.detail');
+    Route::patch('/admin/attendance/{id}', [AdminAttendanceDetailController::class, 'update'])->name('admin.update');
+    Route::get('/admin/staff/list', [AdminStaffListController::class, 'index'])->name('staff');
+    // Route::get('/admin/attendance/staff/{id}', [::class, 'index'])->name('attendance.staff');
+    Route::get('/admin/stamp_correction_request/list', [AdminStampCorrectionRequestController::class, 'index'])->name('admin.stamp_correction_request');
+    Route::get('/admin/stamp_correction_request/approval/{id}', [AdminStampCorrectionRequestController::class, 'show'])->name('admin.approval_show');
+    Route::patch('/admin/stamp_correction_request/approval/{id}', [AdminStampCorrectionRequestController::class, 'approval'])->name('admin.approvel');
+        
 });

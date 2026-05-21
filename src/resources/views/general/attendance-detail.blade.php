@@ -83,9 +83,9 @@
                             @error('check_out')
                                 <p class="error">{{ $message }}</p>
                             @enderror
-                            @foreach ($attendance->breaktimes as $breaktime)
                         </td>
                     </tr>
+                    <!-- @foreach ($attendance->breaktimes as $breaktime) -->
                         <!-- <tr class="table-line">
                             <th class="table-title">
                                 @if($loop->first)
