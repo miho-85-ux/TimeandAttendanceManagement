@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceListController;
+use App\Http\Controllers\AttendanceDetailController;
+use App\Http\Controllers\StampCorrectionRequestController;
+use App\Http\Controllers\AdminAttendanceListController;
+use App\Http\Controllers\AdminStampCorrectionRequestController;
+use App\Http\Controllers\AdminAttendanceDetailController;
+use App\Http\Controllers\AdminStaffListController;
+use App\Http\Controllers\CsvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +23,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+
+Route::get('/admin/login', [AuthController::class, 'adminloginForm'])->name('admin.login');
+
+Route::middleware('auth')->group(function()
+{
+    Route::get('/attendance', [AttendanceController::class, 'index']);
+    Route::post('/attendance', [AttendanceController::class, 'store']);
+    Route::get('/attendance/list', [AttendanceListController::class, 'index'])->name('attendance.list');
+    Route::get('/attendance/detail/{id}', [AttendanceDetailController::class, 'index'])->name('attendance.detail');
+    Route::patch('/attendance/detail/{id}', [AttendanceDetailController::class, 'update'])->name('attendance.update');
+    Route::get('/stamp_correction_request/list', [StampCorrectionRequestController::class, 'index'])->name('stamp_correction_request.list');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    
+    Route::get('/admin/attendance/list', [AdminAttendanceListController::class, 'index'])->name('admin.list');
+    Route::get('/admin/attendance/{id}', [AdminAttendanceDetailController::class, 'index'])->name('admin.detail');
+    Route::patch('/admin/attendance/{id}', [AdminAttendanceDetailController::class, 'update'])->name('admin.update');
+    Route::get('/admin/staff/list', [AdminStaffListController::class, 'index'])->name('staff');
+    Route::get('/admin/attendance/staff/{id}', [AdminStaffListController::class, 'detail'])->name('attendance.staff');
+    Route::get('/admin/stamp_correction_request/list', [AdminStampCorrectionRequestController::class, 'index'])->name('admin.stamp_correction_request');
+    Route::get('/admin/stamp_correction_request/approval/{id}', [AdminStampCorrectionRequestController::class, 'show'])->name('admin.approval_show');
+    Route::patch('/admin/stamp_correction_request/approval/{id}', [AdminStampCorrectionRequestController::class, 'approval'])->name('admin.approvel');
+    Route::get('/admin/csv/{id}', [CsvController::class, 'exportCsv'])->name('csv');
+    
 });

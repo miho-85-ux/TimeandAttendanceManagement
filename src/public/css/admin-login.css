@@ -1,0 +1,54 @@
+.Access-content {
+    width: 1512px;
+    margin: 0 auto;
+    height: auto;
+}
+
+.Access-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 100px 0 80px 0;
+}
+
+.Access-items {
+    width: 680px;
+    margin: 0 auto;
+}
+
+.Access-item {
+    margin: 30px 0;
+}
+
+.label {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.input {
+    width: 680px;
+    height: 45px;
+    font-size: 24px;
+    padding: 0 15px;
+    border-radius: 4px;
+    border: 1px solid #000;
+}
+
+.Access-button {
+    margin: 80px 0 30px 0;
+}
+
+.Access-button__submit {
+    width: 680px;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.error {
+    font-size: 24px;
+    color: red;
+}
