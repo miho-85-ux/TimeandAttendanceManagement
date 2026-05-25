@@ -49,16 +49,16 @@ php artisan config:clear
 以下のコマンド:  
 ```
 //テスト用データベースの作成
-docker-compose exec mysql bash
+docker-compose exec mysql bash  
 mysql -u root -p
-//パスワードはrootと入力
-create database test_database;
+//パスワードはrootと入力  
+create database test_database;  
 
-docker-compose exec php bash
+docker-compose exec php bash  
 php artisan migrate:fresh --env=testing
 ./vendor/bin/phpunit
 ```
-※.env.testingにもStripeのAPIキーを設定してください。  
+  
 
 ## テーブル仕様書について
 ### usersテーブル
@@ -140,16 +140,16 @@ php artisan migrate:fresh --env=testing
 
 ### 備考  
 * 今回のテストデータは2つあります。
-    * テストデータ1  一般ユーザー用
-    * テストデータ2  管理者用  
+    * テストデータ  一般ユーザー用
+    * テストデータ1  管理者用  
 
 * ログインする際、以下のログインパスワードでログインしてください。　
-    * テストデータ1  
+    * テストデータ  
         ```bash  
         メールアドレス:  test@example.com    
         パスワード:      password   
         ```
-    * テストデータ2  
+    * テストデータ1  
         ```bash  
         メールアドレス:  test1@example.com    
         パスワード:      password   
