@@ -24,6 +24,7 @@ class AttendanceDetailController extends Controller
 
     public function update(AttendanceDetailRequest $request, $id) {
         $attendance = Attendance::with('user', 'breaktimes','attendanceRequests.attendanceRequestBreakTimes')->find($id);
+
         $attendanceRequest = AttendanceRequest::create([
             'attendance_id' => $attendance->id,
             'user_id' => auth()->id(),
@@ -33,16 +34,19 @@ class AttendanceDetailController extends Controller
             'status' => 'pending',
         ]);
 
-        foreach($request->break_start as $index => $start){
-            if($start && $request->break_end[$index]) {
-                AttendanceRequestBreakTime::create([
-                    'attendance_request_id' => $attendanceRequest->id,
-                    'break_start' => $attendance->date . ' ' . $start,
-                    'break_end' => $attendance->date . ' ' . $request->break_end[$index],
-                ]);
-            }
+        foreach($request->break_start ?? [] as $index => $start){
+            $end = $request->break_end[$index] ?? null;
+            if (!$start || !$end) continue;
+
+            AttendanceRequestBreakTime::create([
+                'attendance_request_id' => $attendanceRequest->id,
+                'break_start' => $attendance->date . ' ' . $start,
+                'break_end' => $attendance->date . ' ' . $end,
+            ]);
+            
         }
 
+        
        
         return redirect()->route('attendance.detail', $attendance->id );
     }
