@@ -10,7 +10,7 @@ docker-compose up -d --build
 ```  
 4. プロジェクト直下で以下のコマンドを入力
 ```bash
-make init
+make inte
 ```
 ※Makefileを使用しています。実行するコマンドを省略することができます。
 

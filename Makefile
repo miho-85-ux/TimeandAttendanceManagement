@@ -1,5 +1,6 @@
 inte:
 	docker-compose up -d --build
+	sleep 10
 	docker-compose exec php composer install
 	docker-compose exec php cp .env.example .env
 	docker-compose exec php php artisan key:generate
