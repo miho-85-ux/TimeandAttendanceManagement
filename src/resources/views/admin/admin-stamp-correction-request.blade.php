@@ -14,27 +14,27 @@
     <div>
         <table class="request-table">
             <tr class="request-table__row">
-                <th>状態</th>
-                <th>名前</th>
-                <th>対象日時</th>
-                <th>申請理由</th>
-                <th>申請日時</th>
-                <th>詳細</th>
+                <th class="table-title">状態</th>
+                <th class="table-title">名前</th>
+                <th class="table-title">対象日時</th>
+                <th class="table-title">申請理由</th>
+                <th class="table-title">申請日時</th>
+                <th class="table-title">詳細</th>
             </tr>
             @foreach($requests as $request)
             <tr class="request-table__row">
-                <td>
+                <td class="table-item">
                     @if($request->status === 'pending')
                         承認待ち
                     @elseif($request->status === 'approved')
                         承認済み
                     @endif
                 </td>
-                <td>{{ $request->user->name }}</td>
-                <td>{{ $request->requested_check_in  }}</td>
-                <td>{{ $request->reason  }}</td>
-                <td>{{ $request->created_at  }}</td>
-                <td>
+                <td class="table-item">{{ $request->user->name }}</td>
+                <td class="table-item">{{ ($request->request_date ) }}</td>
+                <td class="table-item">{{ $request->reason  }}</td>
+                <td class="table-item"> {{ ($request->formatted_created_at ) }}</td>
+                <td class="table-item">
                     <a class="request-table__button" href="{{ route('admin.approval_show', $request->id) }}">詳細</a>
                 </td>
             </tr>

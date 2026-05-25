@@ -42,9 +42,23 @@
 .request-table__row {
     border-bottom: 3px solid #E1E1E1;
     text-align: center;
+}
+
+.table-title{
+    padding: 10px;
     font-size: 16px;
     font-weight: bold;
     color: #737373;
+    width: 17%;
+}
+
+.table-item{
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+    width: 17%;
+    
 }
 
 .request-table__button {
