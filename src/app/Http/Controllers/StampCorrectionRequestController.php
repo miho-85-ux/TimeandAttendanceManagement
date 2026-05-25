@@ -15,7 +15,7 @@ class StampCorrectionRequestController extends Controller
     public function index(Request $request){
         $status = $request->status ?? 'pending';
 
-        $requests = AttendanceRequest::with('user')->where('status', $status)->get();
+        $requests = AttendanceRequest::with('user')->where('user_id', auth()->id())->where('status', $status)->get();
 
 
         return view('general.stamp-correction-request', compact('requests'));

@@ -31,7 +31,7 @@
                             <p class="approval__table-text">{{ $pendingRequest->check_out_time }}</p>
                         </td>
                     </tr>
-                    <!-- @foreach ($attendance->breaktimes as $breaktime)
+                    @foreach ($pendingRequest->attendanceRequestBreakTimes as $breaktime)
                         <tr class="table-line">
                             <th class="table-title">
                                 @if($loop->first)
@@ -41,22 +41,26 @@
                                 @endif
                             </th>
                             <td class="approval__table-item ">
-                                <p class="approval__table-text"> {{ $breaktime->break_start_time }}</p> 
+                                <p class="approval__table-text"> 
+                                    {{ $breaktime->break_start_time }}
+                                </p> 
                                 <span class="approval__table-span">~</span>
-                                <p class="approval__table-text">{{ $breaktime->break_end_time }}</p>
+                                <p class="approval__table-text">
+                                    {{ $breaktime->break_end_time }}
+                                </p>
                             </td>
                         </tr>
-                    @endforeach -->
+                    @endforeach
                     
                     <tr >
                         <th class="table-title">備考</th>
                         <td class="approval__table-item ">
-                            <p class="approval__table-textarea">{{ $attendance->remarks }}</p>
+                            <p class="approval__table-textarea">{{ $pendingRequest->reason  }}</p>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="button">
+            <div class="buttons">
                 <p class="approval">*承認待ちのため修正はできません。</p>
             </div>
         @else
@@ -85,8 +89,8 @@
                             @enderror
                         </td>
                     </tr>
-                    <!-- @foreach ($attendance->breaktimes as $breaktime) -->
-                        <!-- <tr class="table-line">
+                    @foreach ($attendance->breaktimes as $breaktime) 
+                        <tr class="table-line">
                             <th class="table-title">
                                 @if($loop->first)
                                     休憩
@@ -129,7 +133,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </td>                       
-                    </tr> -->
+                    </tr>
                     <tr >
                         <th class="table-title">備考</th>
                         <td class="table-item">
@@ -141,7 +145,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="button">
+            <div class="buttons">
                 <button class="button-submit" type="submit">修正</button>
             </div>
         @endif

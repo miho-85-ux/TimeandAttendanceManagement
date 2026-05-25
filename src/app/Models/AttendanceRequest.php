@@ -26,6 +26,10 @@ class AttendanceRequest extends Model
     public function attendance() {
         return $this->belongsTo(Attendance::class);
     }
+    
+    public function attendanceRequestBreakTimes() {
+        return $this->hasMany(AttendanceRequestBreakTime::class);
+    }
 
     public function getCheckInTimeAttribute(){
         return Carbon::parse(
@@ -37,6 +41,14 @@ class AttendanceRequest extends Model
         return Carbon::parse(
             $this->requested_check_out
         )->format('H:i');
+    }
+
+    public function getRequestDateAttribute(){
+        return Carbon::parse($this->requested_check_in)->format('Y/n/j');
+    }
+
+    public function getFormattedCreatedAtAttribute(){
+        return Carbon::parse($this->created_at)->format('Y/n/j');
     }
     
 }

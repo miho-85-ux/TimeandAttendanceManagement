@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\AttendanceRequest;
+use App\Models\AttendanceRequestBreakTime;
 
 class AdminStampCorrectionRequestController extends Controller
 {
@@ -19,13 +21,13 @@ class AdminStampCorrectionRequestController extends Controller
     }
 
     public function show($id) {
-        $request = AttendanceRequest::with('user', 'attendance')->find($id);
+        $request = AttendanceRequest::with('user', 'attendance', 'attendanceRequestBreakTimes')->find($id);
 
         return view('admin.approval', compact('request'));
     }
 
     public function approval($id) {
-        $request = AttendanceRequest::with('user', 'attendance')->find($id);
+        $request = AttendanceRequest::with('user', 'attendance', 'attendanceRequestBreakTimes')->find($id);
         $attendance = $request->attendance;
 
         $attendance -> update ([

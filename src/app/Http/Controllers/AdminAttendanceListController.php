@@ -14,26 +14,16 @@ class AdminAttendanceListController extends Controller
     public function index(Request $request){
 
         $dateParam = $request->input('date');
-        $date = $dateParam ? \Carbon\Carbon::parse($dateParam) : \Carbon\Carbon::now(); 
+        $date = $dateParam ? Carbon::parse($dateParam) : Carbon::now(); 
     
         $attendances = Attendance::with('user')
-            -> whereYear('date', $date->year) 
-            -> whereMonth('date', $date->month)
+            -> whereDate('date', $date->format('Y-m-d'))
             -> with('breaktimes')
-            -> get()
-            -> KeyBy('date');
+            -> get();
 
-        $prevMonth = $date -> copy() -> subMonth() -> format('Y-m');
-        $nextMonth = $date -> copy() -> addMonth() -> format('Y-m');
+        $prevDay = $date -> copy() -> subDay() -> format('Y-m-j');
+        $nextDay = $date -> copy() -> addDay() -> format('Y-m-j');
 
-        $dates = [];
-        $start = $date->copy()->startOfMonth();
-        $end = $date->copy()->endOfMonth();
-
-        for ($day = $start; $day->lte($end); $day->addDay()) {
-            $dates[] = $day->copy();
-        }
-
-        return view('admin.admin-attendance-list', compact('attendances',  'prevMonth', 'nextMonth', 'dates','date'));
+        return view('admin.admin-attendance-list', compact('attendances',  'prevDay', 'nextDay', 'date'));
     }
 }
